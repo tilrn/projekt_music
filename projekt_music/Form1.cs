@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
+using projekt_music;
 
 
 namespace projekt_music
@@ -18,14 +19,14 @@ namespace projekt_music
         {
             InitializeComponent();
         }
-
+        connection baza = new connection();
+        string connect = connection.connect();
 
         private void Form1_Load(object sender, EventArgs e)
         {
             lol();
         }
-        connection baza = new connection();
-        string connect = connection.connect();
+       
         public void lol()
         {
             using (NpgsqlConnection con = new NpgsqlConnection(connect))
@@ -37,12 +38,32 @@ namespace projekt_music
                 while (reader.Read())
                 {
                     string ime = reader.GetString(1);
-                    comboBox1.Items.Add(ime);
+                    //comboBox1.Items.Add(ime);
                 }
-                lol
+                
 
-                con.Close();
+                con.Close();   
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Baza bazaa = new Baza();
+            string email = textBox3.Text;
+            string password = textBox4.Text;
+            bazaa.Registracija(email, password);
+           
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -70,5 +70,12 @@ namespace projekt_music
             lol.Show();
             this.Hide();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Prijava lol2 = new Prijava();
+            lol2.Show();
+            this.Hide();
+        }
     }
 }

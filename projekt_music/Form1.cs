@@ -48,10 +48,7 @@ namespace projekt_music
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Baza bazaa = new Baza();
-            string email = textBox3.Text;
-            string password = textBox4.Text;
-            bazaa.Registracija(email, password);
+            
            
             
         }
@@ -64,6 +61,14 @@ namespace projekt_music
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            
+            Registracija lol = new Registracija();
+            lol.Show();
+            this.Hide();
         }
     }
 }

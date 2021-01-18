@@ -11,7 +11,7 @@ namespace projekt_music
     {
         connection baza = new connection();
         string connect = connection.connect();
-        
+
         //registracijas
         public void Registracija(string emaill, string passwordd)
         {
@@ -26,31 +26,33 @@ namespace projekt_music
                 con.Close();
             }
         }
-        public void Prijava(string emaill, string passwordd)
+        public bool Prijava(string emaill, string passwordd)
         {
+            int dela = 0;
             using (NpgsqlConnection con = new NpgsqlConnection(connect))
             {
+                
                 con.Open();
 
                 NpgsqlCommand com = new NpgsqlCommand("SELECT Prijava('" + emaill + "','" + passwordd + "')", con);
                 NpgsqlDataReader reader = com.ExecuteReader();
-                while (reader.Read())
+                if (reader.Read())
                 {
-                    int dela = reader.GetInt32(0);
-
-                    if (dela == 0)
-                    {
-                        MessageBox.Show("Something went wrong");
-                    }
-                    else if (dela == 1)
-                    {
-                        Form1 forma = new Form1();
-                        forma.Show();
-                        Prijava.Hide();
-                    }
+                    dela = reader.GetInt32(0);
+                }
+                
+                
+                if (dela == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
                 }
                 con.Close();
             }
+        }
     }
 
     

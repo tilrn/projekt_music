@@ -24,12 +24,22 @@ namespace projekt_music
             Baza bazaa = new Baza();
             string email = textBox1.Text;
             string password = textBox2.Text;
-            bazaa.Registracija(email, password);
+            bool dela = bazaa.Prijava(email, password);
+            if(dela == true)
+            {
+                Form1 lol1 = new Form1();
+                lol1.Show();
+                this.Hide();
+
+            }
+            else
+            {
+                MessageBox.Show("Registracija neuspešna");
+
+            }
 
 
-            Form1 lol1 = new Form1();
-            lol1.Show();
-            this.Hide();
+            
         }
     }
 }

@@ -24,28 +24,11 @@ namespace projekt_music
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            lol();
+            
             
         }
        
-        public void lol()
-        {
-            using (NpgsqlConnection con = new NpgsqlConnection(connect))
-            {
-                con.Open();
-
-                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM kraji", con);
-                NpgsqlDataReader reader = com.ExecuteReader();
-                while (reader.Read())
-                {
-                    string ime = reader.GetString(1);
-                    //comboBox1.Items.Add(ime);
-                }
-                
-
-                con.Close();   
-            }
-        }
+        
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -76,6 +59,14 @@ namespace projekt_music
         {
             Prijava lol2 = new Prijava();
             lol2.Show();
+            this.Hide();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string email = "tilen.hostnik@gmail.com";
+            Main lol1 = new Main(email);
+            lol1.Show();
             this.Hide();
         }
     }

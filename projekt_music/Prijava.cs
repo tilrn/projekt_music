@@ -27,7 +27,7 @@ namespace projekt_music
             bool dela = bazaa.Prijava(email, password);
             if(dela == true)
             {
-                Main lol1 = new Main();
+                Main lol1 = new Main(email);
                 lol1.Show();
                 this.Hide();
 

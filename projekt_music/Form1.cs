@@ -25,6 +25,7 @@ namespace projekt_music
         private void Form1_Load(object sender, EventArgs e)
         {
             lol();
+            
         }
        
         public void lol()

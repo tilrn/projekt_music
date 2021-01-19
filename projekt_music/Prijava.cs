@@ -27,14 +27,14 @@ namespace projekt_music
             bool dela = bazaa.Prijava(email, password);
             if(dela == true)
             {
-                Form1 lol1 = new Form1();
+                Main lol1 = new Main();
                 lol1.Show();
                 this.Hide();
 
             }
             else
             {
-                MessageBox.Show("Registracija neuspešna");
+                MessageBox.Show("Prijava neuspešna");
 
             }
 

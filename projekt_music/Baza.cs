@@ -118,6 +118,39 @@ namespace projekt_music
                 con.Close();
             }
         }
+        public List<string> IzpisVsega()
+        {
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+                List<string> Izpis = new List<string>();
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM Izpis1()", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    string ime = reader.GetString(0);
+                    string priimek = reader.GetString(1);
+                    string datum_roj = reader.GetString(2);
+                    string email = reader.GetString(3);
+                    string oddelek = reader.GetString(4);
+                    string kraj = reader.GetString(5);
+
+                    Izpis.Add(ime);
+                    Izpis.Add(priimek);
+                    Izpis.Add(datum_roj);
+                    Izpis.Add(email);
+                    Izpis.Add(oddelek);
+                    Izpis.Add(kraj);
+                    //comboBox1.Items.Add(ime);
+                }
+
+
+                con.Close();
+                return Izpis;
+            }
+        }
+
     }
 
     

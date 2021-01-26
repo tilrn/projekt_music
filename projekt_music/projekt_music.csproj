@@ -89,11 +89,23 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Kraji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kraji.Designer.cs">
+      <DependentUpon>Kraji.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pregled.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pregled.Designer.cs">
+      <DependentUpon>pregled.cs</DependentUpon>
     </Compile>
     <Compile Include="Prijava.cs">
       <SubType>Form</SubType>
@@ -109,11 +121,23 @@
     <Compile Include="Registracija.Designer.cs">
       <DependentUpon>Registracija.cs</DependentUpon>
     </Compile>
+    <Compile Include="urejanje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="urejanje.Designer.cs">
+      <DependentUpon>urejanje.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Kraji.resx">
+      <DependentUpon>Kraji.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pregled.resx">
+      <DependentUpon>pregled.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prijava.resx">
       <DependentUpon>Prijava.cs</DependentUpon>
@@ -129,6 +153,9 @@
     </Compile>
     <EmbeddedResource Include="Registracija.resx">
       <DependentUpon>Registracija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="urejanje.resx">
+      <DependentUpon>urejanje.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

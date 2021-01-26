@@ -41,5 +41,15 @@ namespace projekt_music
 
             
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Prijava_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

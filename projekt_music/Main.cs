@@ -30,12 +30,7 @@ namespace projekt_music
 
         private void Main_Load(object sender, EventArgs e)
         {
-            List<string> kraji = new List<string>();
-            kraji = bazaa.Kraji();
-            foreach(string x in kraji)
-            {
-                comboBox2.Items.Add(x);
-            }
+           
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
@@ -45,9 +40,42 @@ namespace projekt_music
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string index = Convert.ToString(comboBox2.SelectedItem);
-            
-            bazaa.Dodaj(textBox6.Text, textBox7.Text, textBox8.Text, textBox9.Text, index);
+          
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+           
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            urejanje urejanje = new urejanje();
+            urejanje.Show();
+            this.Hide();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            pregled Pregled = new pregled();
+            Pregled.Show();
+            this.Hide();
+        }
+
+        private void button3_Click_2(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -44,13 +44,17 @@ namespace projekt_music
                 
                 if (dela == 1)
                 {
+                    con.Close();
                     return true;
+                    
                 }
                 else
                 {
+                    con.Close();
                     return false;
+                    
                 }
-                con.Close();
+                    
             }
         }
         public bool Izpis(string emaill, string passwordd)
@@ -71,13 +75,15 @@ namespace projekt_music
 
                 if (dela == 1)
                 {
+                    con.Close();
                     return true;
                 }
                 else
                 {
+                    con.Close();
                     return false;
                 }
-                con.Close();
+                
             }
         }
         public List<string> Kraji()

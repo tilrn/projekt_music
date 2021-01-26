@@ -80,17 +80,6 @@ namespace projekt_music
             this.Hide();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            listBox1.Items.Add("ime:       priimek:     datum_roj:     email:     oddelek:     kraj:     ");
-            List<string> Izpis = new List<string>();
-            Izpis = bazaa.IzpisVsega();
-            foreach(string x in Izpis)
-            {
-                listBox1.Items.Add(x);
-                //NEDELA SE CIST
-            }
-
-        }
+        
     }
 }

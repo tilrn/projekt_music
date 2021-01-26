@@ -75,7 +75,9 @@ namespace projekt_music
 
         private void button3_Click_2(object sender, EventArgs e)
         {
-
+            Kraji kraji = new Kraji();
+            kraji.Show();
+            this.Hide();
         }
     }
 }

@@ -13,10 +13,11 @@ namespace projekt_music
 {
     public partial class Main : Form
     {
+        string lol;
         public Main(string mail)
         {
             InitializeComponent();
-            string lol = mail;
+             lol = mail;
             
         }
         Baza bazaa = new Baza();
@@ -30,7 +31,7 @@ namespace projekt_music
 
         private void Main_Load(object sender, EventArgs e)
         {
-           
+            label1.Text = lol;
         }
 
         private void tabPage2_Click(object sender, EventArgs e)

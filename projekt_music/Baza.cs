@@ -118,7 +118,7 @@ namespace projekt_music
 
                                 con.Open();
 
-                NpgsqlCommand com = new NpgsqlCommand("SELECT Dodaj('"+ ime +"','"+ priimek +"''"+ datum_roj +"''"+ email +"''"+ kraj +"')", con);
+                NpgsqlCommand com = new NpgsqlCommand("SELECT Dodaj2('"+ ime +"','"+ priimek +"','"+ datum_roj +"','"+ email +"','"+ kraj +"')", con);
                 com.ExecuteNonQuery();
                 
                 con.Close();
@@ -154,6 +154,27 @@ namespace projekt_music
 
                 con.Close();
                 return Izpis;
+            }
+        }
+        public List<string> VsiZaposleni()
+        {
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+                List<string> kraji = new List<string>();
+                NpgsqlCommand com = new NpgsqlCommand("SELECT kraji()", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    string ime = reader.GetString(0);
+                    kraji.Add(ime);
+                    //comboBox1.Items.Add(ime);
+                }
+
+
+                con.Close();
+                return kraji;
             }
         }
 

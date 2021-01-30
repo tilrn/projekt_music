@@ -121,6 +121,12 @@
     <Compile Include="Registracija.Designer.cs">
       <DependentUpon>Registracija.cs</DependentUpon>
     </Compile>
+    <Compile Include="Uporabniki.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Uporabniki.Designer.cs">
+      <DependentUpon>Uporabniki.cs</DependentUpon>
+    </Compile>
     <Compile Include="urejanje.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,9 @@
     </Compile>
     <EmbeddedResource Include="Registracija.resx">
       <DependentUpon>Registracija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Uporabniki.resx">
+      <DependentUpon>Uporabniki.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="urejanje.resx">
       <DependentUpon>urejanje.cs</DependentUpon>

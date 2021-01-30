@@ -47,14 +47,14 @@ namespace projekt_music
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Location = new System.Drawing.Point(12, 48);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(272, 149);
+            this.groupBox2.Size = new System.Drawing.Size(288, 149);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Registracija";
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(91, 109);
+            this.button4.Location = new System.Drawing.Point(114, 103);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 8;
@@ -64,7 +64,7 @@ namespace projekt_music
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(126, 18);
+            this.textBox3.Location = new System.Drawing.Point(175, 18);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 0;
@@ -72,7 +72,7 @@ namespace projekt_music
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 65);
+            this.label3.Location = new System.Drawing.Point(49, 65);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 3;
@@ -80,7 +80,7 @@ namespace projekt_music
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(126, 65);
+            this.textBox4.Location = new System.Drawing.Point(175, 62);
             this.textBox4.Name = "textBox4";
             this.textBox4.PasswordChar = '*';
             this.textBox4.Size = new System.Drawing.Size(100, 20);
@@ -91,9 +91,10 @@ namespace projekt_music
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(10, 21);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 13);
+            this.label4.Size = new System.Drawing.Size(159, 13);
             this.label4.TabIndex = 2;
-            this.label4.Text = "Vnesite svoj g-mail: ";
+            this.label4.Text = "Vnesite svoj username ali gmail :";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // Registracija
             // 

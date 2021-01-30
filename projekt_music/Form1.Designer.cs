@@ -36,9 +36,9 @@ namespace projekt_music
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(162, 73);
+            this.button5.Location = new System.Drawing.Point(55, 22);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(96, 23);
+            this.button5.Size = new System.Drawing.Size(236, 56);
             this.button5.TabIndex = 7;
             this.button5.Text = "REGISTRACIJA";
             this.button5.UseVisualStyleBackColor = true;
@@ -46,9 +46,9 @@ namespace projekt_music
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(70, 73);
+            this.button6.Location = new System.Drawing.Point(55, 84);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(86, 23);
+            this.button6.Size = new System.Drawing.Size(236, 52);
             this.button6.TabIndex = 6;
             this.button6.Text = "PRIJAVA";
             this.button6.UseVisualStyleBackColor = true;
@@ -56,7 +56,7 @@ namespace projekt_music
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(112, 113);
+            this.button1.Location = new System.Drawing.Point(124, 142);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(86, 23);
             this.button1.TabIndex = 8;

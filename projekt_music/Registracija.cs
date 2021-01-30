@@ -18,17 +18,35 @@ namespace projekt_music
         {
             InitializeComponent();
         }
-
+        string hash = "l5ep2o4t@";
         private void button4_Click(object sender, EventArgs e)
         {
             Baza bazaa = new Baza();
             string email = textBox3.Text;
-            string password = textBox4.Text;
+            string password = textBox4.Text;       
             bazaa.Registracija(email, password);
 
-            Form1 lol1 = new Form1();
-            lol1.Show();
-            this.Hide();
+            
+            string emaill = textBox3.Text;
+            string passwordd = textBox4.Text;
+            bool dela = bazaa.Prijava(email, password);
+            if (dela == true)
+            {
+                Main lol1 = new Main(email);
+                lol1.Show();
+                this.Hide();
+
+            }
+            else
+            {
+                MessageBox.Show("Nekaj je šlo narobe :(");
+
+            }
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
 
         }
     }

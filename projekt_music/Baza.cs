@@ -161,20 +161,43 @@ namespace projekt_music
             using (NpgsqlConnection con = new NpgsqlConnection(connect))
             {
                 con.Open();
-                List<string> kraji = new List<string>();
-                NpgsqlCommand com = new NpgsqlCommand("SELECT kraji()", con);
+                List<string> vsizaposleni = new List<string>();
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM izpisZaposlenih1()", con);
                 NpgsqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
                 {
 
                     string ime = reader.GetString(0);
-                    kraji.Add(ime);
-                    //comboBox1.Items.Add(ime);
+                    
+                    vsizaposleni.Add(ime);
+                   
                 }
 
 
                 con.Close();
-                return kraji;
+                return vsizaposleni;
+            }
+        }
+        public List<string> VsiZaposleniPriimek(string ime)
+        {
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+                List<string> vsizaposleni = new List<string>();
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM izpisZaposlenihPriimek('" + ime + "' )", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    string priimek = reader.GetString(0);
+
+                    vsizaposleni.Add(priimek);
+
+                }
+
+
+                con.Close();
+                return vsizaposleni;
             }
         }
 

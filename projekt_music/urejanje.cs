@@ -47,7 +47,7 @@ namespace projekt_music
                 comboBox2.Items.Add(x);
             }
             List<string> zaposleni = new List<string>();
-            zaposleni = bazaa.IzpisVsega();
+            zaposleni = bazaa.VsiZaposleni();
             foreach (string x in zaposleni)
             {
                 comboBox1.Items.Add(x);
@@ -55,6 +55,26 @@ namespace projekt_music
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+                      
+            textBox5.Clear();
+            textBox1.Clear();
+            textBox10.Clear();
+            comboBox3.SelectedIndex = -1;
+            comboBox3.Items.Clear();
+            string uporabnik = comboBox1.SelectedItem.ToString();
+            List<string> zaposlenipriimek = new List<string>();
+            zaposlenipriimek = bazaa.VsiZaposleniPriimek(uporabnik);
+            foreach (string x in zaposlenipriimek)
+            {
+                comboBox3.Items.Add(x);
+                
+            }
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

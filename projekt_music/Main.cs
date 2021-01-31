@@ -88,7 +88,9 @@ namespace projekt_music
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            Uporabniki uporabniki = new Uporabniki();
+            uporabniki.Show();
+            this.Hide();
         }
     }
 }

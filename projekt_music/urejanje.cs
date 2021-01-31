@@ -76,6 +76,7 @@ namespace projekt_music
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            
 
         }
     }

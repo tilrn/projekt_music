@@ -200,7 +200,67 @@ namespace projekt_music
                 return vsizaposleni;
             }
         }
+        public List<string> usersIzpis()
+        {
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+                List<string> userlist = new List<string>();
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM usersIzpis1()", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
 
+                    string user = reader.GetString(0);
+
+                    userlist.Add(user);
+
+                }
+
+
+                con.Close();
+                return userlist;
+            }
+        }
+        public string usersIzpisOboje(string ime)
+        {
+            string geslo = "";
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+                
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM  usersIzpisOboje1('"+ ime +"')", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                if (reader.Read())
+                {
+
+                    geslo = reader.GetString(0);
+
+                    
+
+                }
+
+
+                con.Close();
+                return geslo;
+            }
+        }
+        public void adminUser(string ime)
+        {
+            
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT dodajAdmin('" + ime + "')", con);
+                com.ExecuteNonQuery();
+
+
+
+                con.Close();
+                
+            }
+        }
     }
 
     

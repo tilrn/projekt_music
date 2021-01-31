@@ -61,6 +61,46 @@ $$
     END;
 $$ LANGUAGE 'plpgsql';
 
+CREATE OR REPLACE FUNCTION usersIzpis1()
+RETURNS table(email varchar) AS
+$$
+    DECLARE
+
+    BEGIN
+        RETURN QUERY
+        SELECT u.email
+        FROM users u;
+		
+    END;
+$$ LANGUAGE 'plpgsql';
+
+CCREATE OR REPLACE FUNCTION usersIzpisOboje1(ime varchar)
+RETURNS varchar AS
+$$
+DECLARE
+pass varchar;
+BEGIN
+
+SELECT u.password INTO pass
+FROM users u
+WHERE u.email = ime;
+RETURN pass;
+END;
+$$ LANGUAGE 'plpgsql';
+
+
+
+CREATE OR REPLACE FUNCTION dodajAdmin(ime varchar)
+RETURNS void AS
+$$
+DECLARE
+
+BEGIN
+UPDATE users
+SET admin = true
+WHERE email = ime;
+END;
+$$ LANGUAGE 'plpgsql';
 
 
 

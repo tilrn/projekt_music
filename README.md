@@ -61,8 +61,98 @@ $$
     END;
 $$ LANGUAGE 'plpgsql';
 
+CREATE OR REPLACE FUNCTION usersIzpis1()
+RETURNS table(email varchar) AS
+$$
+    DECLARE
+
+    BEGIN
+        RETURN QUERY
+        SELECT u.email
+        FROM users u;
+		
+    END;
+$$ LANGUAGE 'plpgsql';
+
+CCREATE OR REPLACE FUNCTION usersIzpisOboje1(ime varchar)
+RETURNS varchar AS
+$$
+DECLARE
+pass varchar;
+BEGIN
+
+SELECT u.password INTO pass
+FROM users u
+WHERE u.email = ime;
+RETURN pass;
+END;
+$$ LANGUAGE 'plpgsql';
 
 
+
+CREATE OR REPLACE FUNCTION dodajAdmin(ime varchar)
+RETURNS void AS
+$$
+DECLARE
+
+BEGIN
+UPDATE users
+SET admin = true
+WHERE email = ime;
+END;
+$$ LANGUAGE 'plpgsql';
+
+CREATE OR REPLACE FUNCTION izbrisiUserja(ime varchar)
+RETURNS void AS
+$$
+DECLARE
+
+BEGIN
+DELETE FROM users u
+WHERE u.email = ime;
+
+END;
+$$ LANGUAGE 'plpgsql';
+
+
+CREATE OR REPLACE FUNCTION updateUser(imes varchar, geslos varchar,imen varchar, geslon varchar)
+RETURNS void AS
+$$
+DECLARE
+
+BEGIN
+UPDATE users u
+SET u.email = imen AND u.password = geslon
+WHERE u.email = imes AND u.password = geslosM;
+
+END;
+$$ LANGUAGE 'plpgsql';
+
+
+CREATE OR REPLACE FUNCTION updateUser(imes varchar, geslos varchar,imen varchar, geslon varchar)
+RETURNS void AS
+$$
+DECLARE
+
+BEGIN
+UPDATE users 
+SET email = imen, password = geslon
+WHERE email = imes AND password = geslos;
+
+END;
+$$ LANGUAGE 'plpgsql';
+
+CREATE OR REPLACE FUNCTION admin(ime varchar)
+RETURNS bool AS
+$$
+DECLARE
+adminn bool;
+BEGIN
+SELECT admin INTO adminn FROM users u
+WHERE email = ime;
+RETURN adminn;
+END;
+$$ LANGUAGE 'plpgsql';
 
 
 /* se potrebno narediti

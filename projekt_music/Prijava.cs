@@ -21,13 +21,14 @@ namespace projekt_music
 
         private void button3_Click(object sender, EventArgs e)
         {
+            string nacin = "prijava";
             Baza bazaa = new Baza();
             string email = textBox1.Text;
             string password = textBox2.Text;
             bool dela = bazaa.Prijava(email, password);
             if(dela == true)
             {
-                Main lol1 = new Main(email);
+                Main lol1 = new Main(email,nacin);
                 lol1.Show();
                 this.Hide();
 

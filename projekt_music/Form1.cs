@@ -64,8 +64,9 @@ namespace projekt_music
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            string nacin = "chetanje";
             string email = "tilen.hostnik@gmail.com";
-            Main lol1 = new Main(email);
+            Main lol1 = new Main(email, nacin);
             lol1.Show();
             this.Hide();
         }

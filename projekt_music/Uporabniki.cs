@@ -20,14 +20,14 @@ namespace projekt_music
         connection baza = new connection();
         string connect = connection.connect();
 
-        private void label3_Click(object sender, EventArgs e)
+        public void Refresh()
         {
-
-        }
-
-        private void Uporabniki_Load(object sender, EventArgs e)
-        {
-            
+            comboBox1.Items.Clear();
+            comboBox2.Items.Clear();
+            textBox1.Clear();
+            textBox2.Clear();
+            comboBox2.Text = String.Empty;
+            comboBox1.Text = String.Empty;
             List<string> userslist = new List<string>();
             userslist = bazaa.usersIzpis();
             foreach (string x in userslist)
@@ -36,12 +36,24 @@ namespace projekt_music
                 comboBox1.Items.Add(x);
 
             }
+        }
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void Uporabniki_Load(object sender, EventArgs e)
+        {
+            Refresh();
+
+
 
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             string username = comboBox2.SelectedItem.ToString();
+            //MessageBox.Show(username);
             textBox1.Text = username;
             string geslo = bazaa.usersIzpisOboje(username);
             textBox2.Text = geslo;
@@ -58,6 +70,31 @@ namespace projekt_music
             
             bazaa.adminUser(ime);
             MessageBox.Show("uporabnik : " + ime + " je sedaj admin.");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string ime = comboBox2.SelectedItem.ToString();
+
+            bazaa.deleteUser(ime);
+            MessageBox.Show("uporabnik : " + ime + " je izbrisan.");
+            //textBox1.Clear();
+            //textBox2.Clear();
+            //comboBox2.Text = String.Empty;
+            //comboBox2.SelectedIndex = -1; NE DELUJE
+            Refresh();
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string usernames = comboBox2.SelectedItem.ToString();         
+            string geslos = bazaa.usersIzpisOboje(usernames);
+            string usernamen = textBox1.Text;
+            string geslo = textBox2.Text;
+            bazaa.UpdateUser(usernames, geslos, usernamen, geslo);
+            
+            Refresh();
         }
     }
 }

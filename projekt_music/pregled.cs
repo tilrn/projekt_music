@@ -16,6 +16,10 @@ namespace projekt_music
         {
             InitializeComponent();
         }
+        public void Doda()
+        {
+            listBox1.Items.Add("ime:       priimek:     datum_roj:     email:     oddelek:     kraj:     ");
+        }
 
         Baza bazaa = new Baza();
         connection baza = new connection();
@@ -23,7 +27,8 @@ namespace projekt_music
 
         private void button3_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add("ime:       priimek:     datum_roj:     email:     oddelek:     kraj:     ");
+            listBox1.Items.Clear();
+            Doda();
             List<string> Izpis = new List<string>();
             Izpis = bazaa.IzpisVsega();
             foreach (string x in Izpis)
@@ -35,7 +40,8 @@ namespace projekt_music
 
         private void pregled_Load(object sender, EventArgs e)
         {
-            
+            Doda();
+
         }
     }
 }

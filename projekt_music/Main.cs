@@ -14,10 +14,12 @@ namespace projekt_music
     public partial class Main : Form
     {
         string lol;
-        public Main(string mail)
+        string nacinn;
+        public Main(string mail,string nacin)
         {
             InitializeComponent();
              lol = mail;
+            nacinn = nacin;
             
         }
         Baza bazaa = new Baza();
@@ -31,7 +33,16 @@ namespace projekt_music
 
         private void Main_Load(object sender, EventArgs e)
         {
+            button4.Enabled = false;
+            
             label1.Text = lol;
+            if(nacinn == "prijava") { 
+            bool dela = bazaa.Admin(label1.Text);
+            if (dela == true)
+            {
+                button4.Enabled = true;                
+            }
+            }
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
@@ -88,9 +99,11 @@ namespace projekt_music
 
         private void button4_Click(object sender, EventArgs e)
         {
+            
             Uporabniki uporabniki = new Uporabniki();
             uporabniki.Show();
             this.Hide();
+            
         }
     }
 }

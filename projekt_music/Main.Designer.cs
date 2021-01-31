@@ -39,7 +39,7 @@ namespace projekt_music
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(28, 200);
+            this.button1.Location = new System.Drawing.Point(28, 185);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(474, 100);
@@ -61,7 +61,7 @@ namespace projekt_music
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(28, 319);
+            this.button3.Location = new System.Drawing.Point(28, 301);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(474, 100);
@@ -82,17 +82,17 @@ namespace projekt_music
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(28, 441);
+            this.button4.Location = new System.Drawing.Point(439, 12);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(474, 89);
+            this.button4.Size = new System.Drawing.Size(90, 36);
             this.button4.TabIndex = 4;
-            this.button4.Text = "Uporabniki";
+            this.button4.Text = "nastavitve uporabnikov";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(28, 549);
+            this.button5.Location = new System.Drawing.Point(28, 425);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(474, 92);
             this.button5.TabIndex = 5;
@@ -104,7 +104,7 @@ namespace projekt_music
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(541, 665);
+            this.ClientSize = new System.Drawing.Size(541, 569);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label1);

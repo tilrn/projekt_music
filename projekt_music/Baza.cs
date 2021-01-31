@@ -135,19 +135,12 @@ namespace projekt_music
                 while (reader.Read())
                 {
 
-                    string ime = reader.GetString(0);
-                    string priimek = reader.GetString(1);
-                    string datum_roj = reader.GetString(2);
-                    string email = reader.GetString(3);
-                    string oddelek = reader.GetString(4);
-                    string kraj = reader.GetString(5);
-
-                    Izpis.Add(ime);
-                    Izpis.Add(priimek);
-                    Izpis.Add(datum_roj);
-                    Izpis.Add(email);
-                    Izpis.Add(oddelek);
-                    Izpis.Add(kraj);
+                    string vse = reader.GetString(0)+"  "+ reader.GetString(1) +"  "+ reader.GetString(2)+"  "+ reader.GetString(3)+"  "+ reader.GetString(4)+"  "+ reader.GetString(5);
+                    
+                    
+                    
+                    
+                    Izpis.Add(vse);
                     //comboBox1.Items.Add(ime);
                 }
 
@@ -260,6 +253,70 @@ namespace projekt_music
                 con.Close();
                 
             }
+        }
+        public void deleteUser(string ime)
+        {
+
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT izbrisiUserja('" + ime + "')", con);
+                com.ExecuteNonQuery();
+
+
+
+                con.Close();
+
+            }
+        }
+        public void UpdateUser(string imestaro, string geslostaro, string imenovo, string geslonovo)
+        {
+
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT updateUser('" + imestaro + "','" + geslostaro+"','"+imenovo+"', '"+geslonovo+"')", con);
+                com.ExecuteNonQuery();
+
+
+
+                con.Close();
+
+            }
+        }
+        public bool Admin(string ime)
+        {
+            bool dela = false;
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM  admin('"+ime+"')", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                if (reader.Read())
+                {
+
+                    dela = reader.GetBoolean(0);
+
+
+                }
+                if(dela == true)
+                {
+                    return true;
+                }
+                else if (dela == null)
+                {
+                    return false;
+                }
+
+                return false;
+                con.Close();
+
+            }
+
+
         }
     }
 

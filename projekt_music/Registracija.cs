@@ -26,13 +26,13 @@ namespace projekt_music
             string password = textBox4.Text;       
             bazaa.Registracija(email, password);
 
-            
+            string nacin = "registracija";
             string emaill = textBox3.Text;
             string passwordd = textBox4.Text;
             bool dela = bazaa.Prijava(email, password);
             if (dela == true)
             {
-                Main lol1 = new Main(email);
+                Main lol1 = new Main(email,nacin);
                 lol1.Show();
                 this.Hide();
 

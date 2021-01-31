@@ -35,6 +35,34 @@ BEGIN
 INSERT INTO users(email,password) VALUES(emaill,pass);
 END;
 
+CREATE OR REPLACE FUNCTION izpisZaposlenih1()
+RETURNS table(ime varchar) AS
+$$
+    DECLARE
+
+    BEGIN
+        RETURN QUERY
+        SELECT z.ime
+        FROM zaposleni z;
+    END;
+$$ LANGUAGE 'plpgsql';
+
+
+CREATE OR REPLACE FUNCTION izpisZaposlenihPriimek(imee varchar)
+RETURNS table(priimek varchar) AS
+$$
+    DECLARE
+
+    BEGIN
+        RETURN QUERY
+        SELECT z.priimek
+        FROM zaposleni z
+		WHERE imee = z.ime;
+    END;
+$$ LANGUAGE 'plpgsql';
+
+
+
 
 
 /* se potrebno narediti

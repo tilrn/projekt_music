@@ -155,6 +155,77 @@ END;
 $$ LANGUAGE 'plpgsql';
 
 
+
+CREATE FUNCTION arhiviraj()
+    RETURNS trigger
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE NOT LEAKPROOF
+AS $BODY$
+BEGIN
+
+        INSERT INTO arhivi(id, password, email, admin)
+        VALUES(NEW.id, NEW.password, NEW.email, NEW.admin);
+
+    RETURN NULL;
+    END;
+$BODY$;
+
+CREATE OR REPLACE FUNCTION oddelki()
+RETURNS table(ime_oddelka varchar) AS
+$$
+    DECLARE
+
+    BEGIN
+        RETURN QUERY
+        SELECT o.ime_oddelka
+        FROM oddelki o;
+		
+    END;
+$$ LANGUAGE 'plpgsql';
+
+
+CREATE OR REPLACE FUNCTION oddelkiDodaj(imee varchar)
+RETURNS void AS
+$$
+    DECLARE
+
+    BEGIN
+      INSERT INTO oddelki(ime_oddelka) VALUES(imee);
+	  
+		
+    END;
+$$ LANGUAGE 'plpgsql';
+
+
+CREATE OR REPLACE FUNCTION DodajZkraju(imee varchar, priimekk varchar, datum_rojj timestamp, emaill varchar,imek varchar, postna integer)
+RETURNS void AS
+$$
+DECLARE
+
+BEGIN
+INSERT INTO kraji(ime_kraja,postna_stevilka) VALUES(imek, postna);
+
+INSERT INTO zaposleni(ime, priimek, datum_roj, email, kraj_id)
+VALUES(imee,priimekk,datum_rojj,emaill,(SELECT id FROM kraji WHERE ime_kraja = imek));
+
+END;
+$$ LANGUAGE 'plpgsql';
+
+
+
+//trigger
+
+CREATE TRIGGER arhiviraj
+    AFTER INSERT
+    ON users
+    FOR EACH ROW
+    EXECUTE PROCEDURE arhiviraj();
+    
+    
+    
+    
+
 /* se potrebno narediti
 - gesla criptirati
 

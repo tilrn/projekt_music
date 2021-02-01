@@ -20,6 +20,7 @@ namespace projekt_music
         Baza bazaa = new Baza();
         connection baza = new connection();
         string connect = connection.connect();
+        int clicked = 0;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -29,8 +30,20 @@ namespace projekt_music
         private void button2_Click(object sender, EventArgs e)
         {
             string index = Convert.ToString(comboBox2.SelectedItem);
+            if (clicked == 0) { 
+            
 
-            bazaa.Dodaj(textBox6.Text, textBox7.Text, textBox8.Text, textBox9.Text, index);
+                bazaa.Dodaj(textBox6.Text, textBox7.Text, textBox8.Text, textBox9.Text, index);
+            
+            }
+            else
+            {
+               
+                bazaa.DodajZkraju(textBox6.Text, textBox7.Text, textBox8.Text, textBox9.Text,textBox3.Text,Convert.ToInt32(textBox2.Text));
+                
+            }
+            textBox2.Clear();
+            textBox3.Clear();
             textBox6.Clear();
             textBox7.Clear();
             textBox8.Clear();
@@ -40,6 +53,10 @@ namespace projekt_music
 
         private void urejanje_Load(object sender, EventArgs e)
         {
+            textBox2.Visible = false;
+            textBox3.Visible = false;
+            label4.Visible = false;
+            label11.Visible = false;
             List<string> kraji = new List<string>();
             kraji = bazaa.Kraji();
             foreach (string x in kraji)
@@ -78,6 +95,16 @@ namespace projekt_music
         {
             
 
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            label4.Visible = true;
+            label11.Visible = true;
+            comboBox2.Enabled = false;
+            textBox2.Visible = true;
+            textBox3.Visible = true;
+            clicked = 1;
         }
     }
 }

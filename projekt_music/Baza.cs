@@ -124,6 +124,23 @@ namespace projekt_music
                 con.Close();
             }
         }
+        public void DodajZkraju(string ime, string priimek, string datum_roj, string email, string imek,int postna)
+        {
+
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                //ERROR:  column "datum_roj" is of type timestamp without time zone but expression is of type character varying
+                //LINE 2: VALUES(imee, priimekk, datum_rojj, emaill, (SELECT id FROM kraji...
+                // to se ne dela v pg adminu 
+
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT DodajZkraju('" + ime + "','" + priimek + "','" + datum_roj + "','" + email + "','" + imek + "','"+ postna +"')", con);
+                com.ExecuteNonQuery();
+
+                con.Close();
+            }
+        }
         public List<string> IzpisVsega()
         {
             using (NpgsqlConnection con = new NpgsqlConnection(connect))
@@ -317,6 +334,28 @@ namespace projekt_music
             }
 
 
+        }
+        public List<string> oddelki()
+        {
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+                List<string> oddelki = new List<string>();
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM oddelki()", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    string ime = reader.GetString(0);
+
+                    oddelki.Add(ime);
+
+                }
+
+
+                con.Close();
+                return oddelki;
+            }
         }
     }
 

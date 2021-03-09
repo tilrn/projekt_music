@@ -31,14 +31,14 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(507, 29);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Location = new System.Drawing.Point(380, 24);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(129, 46);
+            this.button3.Size = new System.Drawing.Size(97, 37);
             this.button3.TabIndex = 8;
             this.button3.Text = "Refresh";
             this.button3.UseVisualStyleBackColor = true;
@@ -47,31 +47,40 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(18, 29);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(14, 24);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(123, 17);
+            this.label9.Size = new System.Drawing.Size(94, 13);
             this.label9.TabIndex = 7;
             this.label9.Text = "Pregled podatkov:";
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(21, 83);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.listBox1.Location = new System.Drawing.Point(16, 67);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(749, 340);
+            this.listBox1.Size = new System.Drawing.Size(563, 277);
             this.listBox1.TabIndex = 6;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(489, 350);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Nazaj";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pregled
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 382);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.listBox1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "pregled";
             this.Text = "pregled";
             this.Load += new System.EventHandler(this.pregled_Load);
@@ -85,5 +94,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button button1;
     }
 }

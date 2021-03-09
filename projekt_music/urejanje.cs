@@ -13,9 +13,13 @@ namespace projekt_music
 {
     public partial class urejanje : Form
     {
-        public urejanje()
+        string maill;
+        string nacinn;
+        public urejanje(string mail, string nacin)
         {
             InitializeComponent();
+            maill = mail;
+            nacinn = nacin;
         }
         Baza bazaa = new Baza();
         connection baza = new connection();
@@ -49,6 +53,12 @@ namespace projekt_music
             textBox8.Clear();
             textBox9.Clear();
             comboBox2.SelectedIndex = -1;
+            this.Refresh();
+            label4.Visible = false;
+            label11.Visible = false;
+            comboBox2.Enabled = true;
+            textBox2.Visible = false;
+            textBox3.Visible = false;
         }
 
         private void urejanje_Load(object sender, EventArgs e)
@@ -105,6 +115,18 @@ namespace projekt_music
             textBox2.Visible = true;
             textBox3.Visible = true;
             clicked = 1;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Main lol1 = new Main(maill, nacinn);
+            lol1.Show();
+            this.Hide();
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -12,8 +12,12 @@ namespace projekt_music
 {
     public partial class pregled : Form
     {
-        public pregled()
+        string maill;
+        string nacinn;
+        public pregled(string mail, string nacin)
         {
+            maill = mail;
+            nacinn = nacin;
             InitializeComponent();
         }
         public void Doda()
@@ -42,6 +46,13 @@ namespace projekt_music
         {
             Doda();
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Main lol1 = new Main(maill, nacinn);
+            lol1.Show();
+            this.Hide();
         }
     }
 }

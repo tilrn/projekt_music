@@ -321,15 +321,17 @@ namespace projekt_music
                 }
                 if(dela == true)
                 {
+                    con.Close();
                     return true;
                 }
-                else if (dela == null)
+                else if (dela == false)
                 {
+                    con.Close();
                     return false;
                 }
 
                 return false;
-                con.Close();
+                
 
             }
 
@@ -357,6 +359,29 @@ namespace projekt_music
                 return oddelki;
             }
         }
+        public List<string> IzpisOsebe(string ime, string priimek)
+        {
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+                List<string> vsizaposleni = new List<string>();
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM izpisZaposleniIme('"+ime+"','"+priimek+"')", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    //string ime = reader.GetString(0);
+                    //TUKI SM USTAU skratka uno desno pri urejanju dela supr sam tole rabim dobit email sam sm retard pa sm vse se enkrat izpisvau tk da sam napis funkcijo, ku dobis vn mail od uporabnika, pa se mal spremen da bo delalo tist za kraje, to bos se mal problem
+                    vsizaposleni.Add(ime);
+
+                }
+
+
+                con.Close();
+                return vsizaposleni;
+            }
+        }
+
     }
 
     

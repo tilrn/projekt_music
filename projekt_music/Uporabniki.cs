@@ -12,9 +12,13 @@ namespace projekt_music
 {
     public partial class Uporabniki : Form
     {
-        public Uporabniki()
-        {
+        string nacinn;
+        string maill;
+        public Uporabniki(string mail, string nacin)
+        {            
             InitializeComponent();
+            nacinn = nacin;
+            maill = mail;
         }
         Baza bazaa = new Baza();
         connection baza = new connection();
@@ -95,6 +99,13 @@ namespace projekt_music
             bazaa.UpdateUser(usernames, geslos, usernamen, geslo);
             
             Refresh();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Main lol1 = new Main(maill, nacinn);
+            lol1.Show();
+            this.Hide();
         }
     }
 }

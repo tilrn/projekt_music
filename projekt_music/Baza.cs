@@ -359,26 +359,67 @@ namespace projekt_music
                 return oddelki;
             }
         }
-        public List<string> IzpisOsebe(string ime, string priimek)
+        
+        public string izpisGmaila(string ime,string priimek)
         {
+            string gmail = "";
             using (NpgsqlConnection con = new NpgsqlConnection(connect))
             {
                 con.Open();
-                List<string> vsizaposleni = new List<string>();
-                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM izpisZaposleniIme('"+ime+"','"+priimek+"')", con);
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM  gmailUserja('" + ime + "', '"+priimek+"')", con);
                 NpgsqlDataReader reader = com.ExecuteReader();
-                while (reader.Read())
+                if (reader.Read())
                 {
 
-                    //string ime = reader.GetString(0);
-                    //TUKI SM USTAU skratka uno desno pri urejanju dela supr sam tole rabim dobit email sam sm retard pa sm vse se enkrat izpisvau tk da sam napis funkcijo, ku dobis vn mail od uporabnika, pa se mal spremen da bo delalo tist za kraje, to bos se mal problem
-                    vsizaposleni.Add(ime);
+                    gmail = reader.GetString(0);
+
+
 
                 }
 
 
                 con.Close();
-                return vsizaposleni;
+                return gmail;
+            }
+        }
+        public string izpisKraja(string ime, string priimek)
+        {
+            string kraj = "";
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM  krajIzpis('" + ime + "', '" + priimek + "')", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                if (reader.Read())
+                {
+
+                    kraj = reader.GetString(0);
+
+
+
+                }
+
+
+                con.Close();
+                return kraj;
+            }
+        }
+        public void DELETE(string ime, string priimek)
+        {
+
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM  IzbrisUporabnika('" + ime + "', '" + priimek + "')", con);
+                com.ExecuteNonQuery();
+
+
+
+                con.Close();
+
             }
         }
 

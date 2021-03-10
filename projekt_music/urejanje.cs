@@ -28,7 +28,27 @@ namespace projekt_music
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+            /*
+             
+            CREATE OR REPLACE FUNCTION updateUporabnika (krajj varchar, imee varchar,priimekk varchar, emaill varchar, starime varchar, starpriimek varchar) 
+RETURNS void 
+AS $$ 
+DECLARE 
+
+BEGIN
+
+UPDATE zaposleni 
+SET ime = imee , priimek = priimekk , email = emaill , kraj_id = (SELECT id FROM kraji k WHERE k.ime_kraja = krajj)
+WHERE ime = starime AND priimek = starpriimek;
+
+
+
+
+END; $$ 
+LANGUAGE 'plpgsql';
+
+
+           */
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -63,6 +83,7 @@ namespace projekt_music
 
         private void urejanje_Load(object sender, EventArgs e)
         {
+            comboBox4.Visible = false;
             textBox2.Visible = false;
             textBox3.Visible = false;
             label4.Visible = false;
@@ -72,6 +93,7 @@ namespace projekt_music
             foreach (string x in kraji)
             {
                 comboBox2.Items.Add(x);
+                comboBox4.Items.Add(x);
             }
             List<string> zaposleni = new List<string>();
             zaposleni = bazaa.VsiZaposleni();
@@ -80,7 +102,8 @@ namespace projekt_music
                 comboBox1.Items.Add(x);
             }
         }
-
+        
+        string uporabnikime = "";
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             
@@ -90,9 +113,9 @@ namespace projekt_music
             textBox10.Clear();
             comboBox3.SelectedIndex = -1;
             comboBox3.Items.Clear();
-            string uporabnik = comboBox1.SelectedItem.ToString();
+            uporabnikime = comboBox1.SelectedItem.ToString();
             List<string> zaposlenipriimek = new List<string>();
-            zaposlenipriimek = bazaa.VsiZaposleniPriimek(uporabnik);
+            zaposlenipriimek = bazaa.VsiZaposleniPriimek(uporabnikime);
             foreach (string x in zaposlenipriimek)
             {
                 comboBox3.Items.Add(x);
@@ -123,10 +146,48 @@ namespace projekt_music
             lol1.Show();
             this.Hide();
         }
-
+        string uporabnikpriimek = "";
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
+            uporabnikpriimek = comboBox3.SelectedItem.ToString();
+            string gmail = bazaa.izpisGmaila(uporabnikime, uporabnikpriimek);
+            textBox5.Text = gmail;
+            textBox10.Text = uporabnikime;
+            textBox1.Text = uporabnikpriimek;
+            textBox4.Text = bazaa.izpisKraja(uporabnikime, uporabnikpriimek);
+        }
 
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            textBox4.Visible = false;
+            comboBox4.Visible = true;
+
+        }
+        public void update()
+        {
+            textBox10.Text = "";
+            textBox1.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+            comboBox1.SelectedItem = -1;
+            comboBox3.SelectedItem = -1;
+            comboBox4.SelectedItem = -1;
+            textBox4.Visible = true;
+            comboBox4.Visible = false;
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            bazaa.DELETE(uporabnikime, uporabnikpriimek);
+            //10,1,4,5
+            update();
+            
         }
     }
 }

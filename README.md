@@ -154,6 +154,59 @@ RETURN adminn;
 END;
 $$ LANGUAGE 'plpgsql';
 
+//za izpis gmaila
+CREATE OR REPLACE FUNCTION gmailUserja(imee varchar,priimekk varchar) 
+RETURNS varchar 
+AS $$ 
+DECLARE 
+gmail varchar; 
+BEGIN
+
+SELECT z.email INTO gmail 
+FROM zaposleni z 
+WHERE z.ime = imee AND z.priimek = priimekk;
+
+
+RETURN gmail; 
+
+END; $$ 
+LANGUAGE 'plpgsql';
+
+// izpis kraja
+CREATE OR REPLACE FUNCTION krajIzpis (imee varchar,priimekk varchar) 
+RETURNS varchar 
+AS $$ 
+DECLARE 
+krajime varchar; 
+BEGIN
+
+SELECT k.ime_kraja INTO krajime 
+FROM zaposleni z INNER JOIN kraji k ON z.kraj_id = k.id
+WHERE z.ime = imee AND z.priimek = priimekk;
+
+
+RETURN krajime; 
+
+END; $$ 
+LANGUAGE 'plpgsql';
+
+//izbriss uporabnika
+
+SELECT CREATE OR REPLACE FUNCTION IzbrisUporabnika (imee varchar,priimekk varchar) 
+RETURNS void 
+AS $$ 
+DECLARE 
+
+BEGIN
+
+DELETE FROM zaposleni z
+WHERE z.ime = imee AND z.priimek = priimekk;
+
+
+
+
+END; $$ 
+LANGUAGE 'plpgsql';
 
 
 CREATE FUNCTION arhiviraj()

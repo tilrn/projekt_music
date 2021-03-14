@@ -285,6 +285,43 @@ WHERE ime = starime AND priimek = starpriimek;
 END; $$ 
 LANGUAGE 'plpgsql';
 
+// delete kraji
+
+CREATE OR REPLACE FUNCTION DeleteKraji (krajj varchar, postnaa integer) 
+RETURNS void 
+AS $$ 
+DECLARE 
+
+BEGIN
+
+DELETE FROM kraji
+WHERE ime_kraja = krajj AND postna_stevilka = postnaa;
+
+
+
+
+END; $$ 
+LANGUAGE 'plpgsql';
+
+//update kraji 
+
+CREATE OR REPLACE FUNCTION UpdateKraji (krajj varchar, postnaa integer, starkraj varchar, startaPostna integer) 
+RETURNS void 
+AS $$ 
+DECLARE 
+
+BEGIN
+
+UPDATE kraji 
+SET ime_kraja = krajj , postna_stevilka = postnaa
+WHERE ime_kraja = starkraj AND postna_stevilka = startaPostna;
+
+
+
+
+END; $$ 
+LANGUAGE 'plpgsql';
+
 CREATE OR REPLACE FUNCTION DodajZkraju(imee varchar, priimekk varchar, datum_rojj timestamp, emaill varchar,imek varchar, postna integer)
 RETURNS void AS
 $$
@@ -298,6 +335,47 @@ VALUES(imee,priimekk,datum_rojj,emaill,(SELECT id FROM kraji WHERE ime_kraja = i
 
 END;
 $$ LANGUAGE 'plpgsql';
+
+//delete kraji
+
+CREATE OR REPLACE FUNCTION InsertKraji (krajj varchar, postnaa integer) 
+RETURNS void 
+AS $$ 
+DECLARE 
+
+BEGIN
+
+UPDATE zaposleni SET
+kraj_id = (SELECT id FROM kraji WHERE ime_kraja = 'BREZ')
+WHERE kraj_id = (SELECT id FROM kraji WHERE ime_kraja = krajj AND postna_stevilka = postnaa);
+
+
+DELETE FROM kraji
+WHERE ime_kraja = krajj AND postna_stevilka = postnaa;
+
+
+
+
+END; $$ 
+LANGUAGE 'plpgsql';
+
+//insert into kraji
+
+CREATE OR REPLACE FUNCTION InsertKraji (krajj varchar, postnaa integer) 
+RETURNS void 
+AS $$ 
+DECLARE 
+
+BEGIN
+
+INSERT INTO kraji(ime_kraja,postna_stevilka) VALUES(krajj,postnaa);
+
+
+
+END; $$ 
+LANGUAGE 'plpgsql';
+
+
 
 
 

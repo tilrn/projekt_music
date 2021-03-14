@@ -493,14 +493,30 @@ namespace projekt_music
 
             }
         }
-        public void DELETEKraja(string kraj, string posta)
+        public void DELETEKraja(string kraj, int posta)
         {
 
             using (NpgsqlConnection con = new NpgsqlConnection(connect))
             {
                 con.Open();
 
-                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM  DeleteKraji('" + kraj + "', '" + posta + "')", con);
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM  DeleteKraji('" + kraj + "', " + posta + ")", con);
+                com.ExecuteNonQuery();
+
+
+
+                con.Close();
+
+            }
+        }
+        public void InsertKraji(string kraj, int posta)
+        {
+
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM  InsertKraji('" + kraj + "', " + posta + ")", con);
                 com.ExecuteNonQuery();
 
 

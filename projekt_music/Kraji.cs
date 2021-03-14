@@ -29,8 +29,16 @@ namespace projekt_music
             textBox2.Text = "";
             textBox3.Text = "";
             textBox4.Text = "";
-            comboBox1.SelectedIndex = -1;
-            
+            comboBox1.Text = "";
+
+            List<string> kraji = new List<string>();
+            kraji = bazaa.Kraji();
+            foreach (string x in kraji)
+            {
+                comboBox1.Items.Add(x);
+
+            }
+
 
         }
 
@@ -39,10 +47,7 @@ namespace projekt_music
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            //bazaa.DELETEKraja();
-        }
+        
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -112,7 +117,14 @@ LANGUAGE 'plpgsql';
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            int postaZaDodajanje = Convert.ToInt32(textBox4.Text);
+            bazaa.InsertKraji(textBox2.Text, postaZaDodajanje);
+            update();
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            bazaa.DELETEKraja(starKraj, Convert.ToInt32(staraPostna));
+            update();
         }
     }
 }

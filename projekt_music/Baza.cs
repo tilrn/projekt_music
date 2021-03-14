@@ -422,6 +422,45 @@ namespace projekt_music
 
             }
         }
+        public void UpdateUporabnik(string krajj, string imee, string priimekk, string email, string staroIme, string starpriimek)
+        {
+
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM  updateUporabnika('" + krajj + "', '" + imee + "','" + priimekk + "', '" + email + "''" + staroIme + "', '" + starpriimek + "')", con);
+                com.ExecuteNonQuery();
+
+
+
+                con.Close();
+
+            }
+        }
+        public int izpisPostne(string krajIme)
+        {
+            int postna = 0;
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT vrniPostnoSt('" + krajIme + "')", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                if (reader.Read())
+                {
+
+                    postna = Convert.ToInt32(reader.GetString(0));
+
+
+
+                }
+
+
+                con.Close();
+                return postna;
+            }
+        }
 
     }
 

@@ -13,6 +13,7 @@ namespace projekt_music
 {
     public partial class urejanje : Form
     {
+        bool krajj = false;
         string maill;
         string nacinn;
         public urejanje(string mail, string nacin)
@@ -28,27 +29,21 @@ namespace projekt_music
 
         private void button1_Click(object sender, EventArgs e)
         {
-            /*
-             
-            CREATE OR REPLACE FUNCTION updateUporabnika (krajj varchar, imee varchar,priimekk varchar, emaill varchar, starime varchar, starpriimek varchar) 
-RETURNS void 
-AS $$ 
-DECLARE 
-
-BEGIN
-
-UPDATE zaposleni 
-SET ime = imee , priimek = priimekk , email = emaill , kraj_id = (SELECT id FROM kraji k WHERE k.ime_kraja = krajj)
-WHERE ime = starime AND priimek = starpriimek;
-
-
-
-
-END; $$ 
-LANGUAGE 'plpgsql';
-
-
-           */
+            string staroIme = Convert.ToString(comboBox1.SelectedItem);
+            string starPriimek = Convert.ToString(comboBox2.SelectedItem);
+            string novKraj = Convert.ToString(comboBox4.SelectedItem);
+            if (krajj == false)
+            {
+                bazaa.UpdateUporabnik(textBox4.Text,textBox10.Text,textBox1.Text,textBox5.Text, staroIme, starPriimek);
+                
+            }
+            else
+            {
+                bazaa.UpdateUporabnik(novKraj, textBox10.Text, textBox1.Text, textBox5.Text, staroIme, starPriimek);
+                krajj = false;
+            }
+            update();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -166,6 +161,7 @@ LANGUAGE 'plpgsql';
         {
             textBox4.Visible = false;
             comboBox4.Visible = true;
+            krajj = true;
 
         }
         public void update()
@@ -188,6 +184,16 @@ LANGUAGE 'plpgsql';
             //10,1,4,5
             update();
             
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

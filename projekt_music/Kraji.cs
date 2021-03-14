@@ -23,6 +23,16 @@ namespace projekt_music
         Baza bazaa = new Baza();
         connection baza = new connection();
         string connect = connection.connect();
+        private void update()
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            comboBox1.SelectedIndex = -1;
+            
+
+        }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
@@ -31,7 +41,7 @@ namespace projekt_music
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            bazaa.DELETEKraja(te);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -41,13 +51,17 @@ namespace projekt_music
             this.Hide();
 
         }
-
+        string starKraj = "";
+        int staraPostna;
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string imeKraja = Convert.ToString(comboBox1.SelectedItem);
+            starKraj = imeKraja;
             int postnaKraja = bazaa.izpisPostne(imeKraja);
             textBox1.Text = imeKraja;
             textBox3.Text = Convert.ToString(postnaKraja);
+            
+            staraPostna = postnaKraja;
         }
 
         private void Kraji_Load(object sender, EventArgs e)
@@ -59,17 +73,22 @@ namespace projekt_music
                 comboBox1.Items.Add(x);
                 
             }
+            /*
             List<string> zaposleni = new List<string>();
             zaposleni = bazaa.VsiZaposleni();
             foreach (string x in zaposleni)
             {
                 comboBox1.Items.Add(x);
             }
+            */
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show(starKraj);
+            MessageBox.Show(textBox1.Text);
+            bazaa.Updatekrajov(textBox1.Text, Convert.ToInt32(textBox3.Text),starKraj,Convert.ToInt32(staraPostna));
+            update();
             /*
             CREATE OR REPLACE FUNCTION UpdateKraji (krajj varchar, postnaa varchar, starkraj varchar, startaPostna varchar) 
 RETURNS void 

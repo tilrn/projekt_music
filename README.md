@@ -88,7 +88,24 @@ RETURN pass;
 END;
 $$ LANGUAGE 'plpgsql';
 
+//vrni postno stevilko
 
+CREATE OR REPLACE FUNCTION vrniPostnoSt (krajj varchar) 
+RETURNS varchar 
+AS $$ 
+DECLARE 
+postnaa varchar;
+BEGIN
+
+SELECT k.postna_stevilka INTO postnaa
+FROM kraji k
+WHERE k.ime_kraja = krajj;
+
+return postnaa;
+
+
+END; $$ 
+LANGUAGE 'plpgsql';
 
 CREATE OR REPLACE FUNCTION dodajAdmin(ime varchar)
 RETURNS void AS
@@ -250,6 +267,23 @@ $$
     END;
 $$ LANGUAGE 'plpgsql';
 
+//update uporabnika
+CREATE OR REPLACE FUNCTION updateUporabnika (krajj varchar, imee varchar,priimekk varchar, emaill varchar, starime varchar, starpriimek varchar) 
+RETURNS void 
+AS $$ 
+DECLARE 
+
+BEGIN
+
+UPDATE zaposleni 
+SET ime = imee , priimek = priimekk , email = emaill , kraj_id = (SELECT id FROM kraji k WHERE k.ime_kraja = krajj)
+WHERE ime = starime AND priimek = starpriimek;
+
+
+
+
+END; $$ 
+LANGUAGE 'plpgsql';
 
 CREATE OR REPLACE FUNCTION DodajZkraju(imee varchar, priimekk varchar, datum_rojj timestamp, emaill varchar,imek varchar, postna integer)
 RETURNS void AS

@@ -94,7 +94,9 @@ namespace projekt_music
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            Oddelki oddelki = new Oddelki(emaill, nacinn);
+            oddelki.Show();
+            this.Hide();
         }
 
         private void button4_Click(object sender, EventArgs e)

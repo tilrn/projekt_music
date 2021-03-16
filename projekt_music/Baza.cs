@@ -525,6 +525,76 @@ namespace projekt_music
 
             }
         }
+        //ze obstaja
+        public List<string> Oddelki()
+        {
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+                List<string> oddelki = new List<string>();
+                NpgsqlCommand com = new NpgsqlCommand("SELECT IzpisOddelkov()", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    string ime = reader.GetString(0);
+                    oddelki.Add(ime);
+                    //comboBox1.Items.Add(ime);
+                }
+
+
+                con.Close();
+                return oddelki;
+            }
+        }
+        public void DELETEodelka(string ime)
+        {
+
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM  DeleteOddelki('" + ime + "')", con);
+                com.ExecuteNonQuery();
+
+
+
+                con.Close();
+
+            }
+        }
+        public void UpdateOddelki(string ime, string staro_ime)
+        {
+
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM  UpdateOddelki('" + ime + "','"+staro_ime+"')", con);
+                com.ExecuteNonQuery();
+
+
+
+                con.Close();
+
+            }
+        }
+        public void InsertOddelki(string ime)
+        {
+
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM  InsertOddelki('" + ime + "')", con);
+                com.ExecuteNonQuery();
+
+
+
+                con.Close();
+
+            }
+        }
 
     }
 

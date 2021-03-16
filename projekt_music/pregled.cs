@@ -20,10 +20,7 @@ namespace projekt_music
             nacinn = nacin;
             InitializeComponent();
         }
-        public void Doda()
-        {
-            listBox1.Items.Add("ime:       priimek:     datum_roj:     email:     oddelek:     kraj:     ");
-        }
+        
 
         Baza bazaa = new Baza();
         connection baza = new connection();
@@ -31,8 +28,13 @@ namespace projekt_music
 
         private void button3_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void pregled_Load(object sender, EventArgs e)
+        {
             listBox1.Items.Clear();
-            Doda();
+            listBox1.Items.Add("ime:       priimek:     datum_roj:     email:     oddelek:     kraj:     ");                   
             List<string> Izpis = new List<string>();
             Izpis = bazaa.IzpisVsega();
             foreach (string x in Izpis)
@@ -40,11 +42,31 @@ namespace projekt_music
                 listBox1.Items.Add(x);
                 //NEDELA SE CIST
             }
-        }
 
-        private void pregled_Load(object sender, EventArgs e)
-        {
-            Doda();
+
+            /*
+             CREATE OR REPLACE FUNCTION Izpis1()
+RETURNS TABLE (ime varchar, priimek varchar, datum_roj timestamp, email varchar, ime_oddelka varchar, ime_kraja varchar) AS
+$$
+DECLARE
+
+BEGIN
+RETURN QUERY
+SELECT z.ime, z.priimek, z.datum_roj,z.email,o.ime_oddelka,k.ime_kraja
+FROM zaposleni z INNER JOIN oddelki o ON z.oddelek_id = o.id
+INNER JOIN kraji k ON k.id = z.kraj_id;
+
+END;
+$$ LANGUAGE 'plpgsql';
+
+            nevem zaka ne dela
+            
+            
+            
+            
+             
+             
+              */
 
         }
 

@@ -375,6 +375,70 @@ INSERT INTO kraji(ime_kraja,postna_stevilka) VALUES(krajj,postnaa);
 END; $$ 
 LANGUAGE 'plpgsql';
 
+//izpis oddelkov
+
+CREATE OR REPLACE FUNCTION IzpisOddelkov()
+RETURNS table(ime_oddelka varchar) AS
+$$
+    DECLARE
+
+    BEGIN
+        RETURN QUERY
+        SELECT o.ime_oddelka
+        FROM oddelki o;
+		
+    END;
+$$ LANGUAGE 'plpgsql';
+
+//izbris oddelka
+
+CREATE OR REPLACE FUNCTION DeleteOddelki (ime varchar) 
+RETURNS void 
+AS $$ 
+DECLARE 
+
+BEGIN
+
+DELETE FROM oddelki
+WHERE ime_oddelka = ime;
+
+
+
+END; $$ 
+LANGUAGE 'plpgsql';
+
+//uppdate oddelki
+
+CREATE OR REPLACE FUNCTION UpdateOddelki (ime varchar,staro_ime varchar) 
+RETURNS void 
+AS $$ 
+DECLARE 
+
+BEGIN
+
+UPDATE oddelki
+SET ime_oddelka = ime
+WHERE ime_oddelka = staro_ime;
+
+
+
+END; $$ 
+LANGUAGE 'plpgsql';
+
+//insert into oddelki
+
+CREATE OR REPLACE FUNCTION InsertOddelki (ime varchar) 
+RETURNS void 
+AS $$ 
+DECLARE 
+
+BEGIN
+
+INSERT INTO oddelki(ime_oddelka)VALUES(ime);
+
+
+END; $$ 
+LANGUAGE 'plpgsql';
 
 
 
